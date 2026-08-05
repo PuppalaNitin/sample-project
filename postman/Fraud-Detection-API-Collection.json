@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "fraud-detection-api-001",
+		"name": "Fraud Detection Rule Engine API",
+		"description": "Enterprise Fraud Detection APIs - Strategy Pattern Implementation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Evaluate Transaction - SAFE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idempotencyKey\": \"idem-safe-001\",\n  \"amount\": 1500.00,\n  \"currency\": \"INR\",\n  \"cardNumber\": \"4111111111111111\",\n  \"merchantId\": \"FLIPKART001\",\n  \"merchantName\": \"Flipkart\",\n  \"customerId\": \"CUST500005\",\n  \"ipAddress\": \"103.21.58.90\",\n  \"geoLocation\": \"Mumbai, India\",\n  \"deviceId\": \"DEV-ANDROID-005\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fraud/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fraud",
+						"evaluate"
+					]
+				}
+			}
+		},
+		{
+			"name": "Evaluate Transaction - HIGH VALUE (Suspicious)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idempotencyKey\": \"idem-highvalue-001\",\n  \"amount\": 75000.00,\n  \"currency\": \"INR\",\n  \"cardNumber\": \"5500000000008888\",\n  \"merchantId\": \"AMAZON001\",\n  \"merchantName\": \"Amazon India\",\n  \"customerId\": \"CUST600006\",\n  \"ipAddress\": \"182.76.45.12\",\n  \"geoLocation\": \"Delhi, India\",\n  \"deviceId\": \"DEV-IOS-006\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fraud/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fraud",
+						"evaluate"
+					]
+				}
+			}
+		},
+		{
+			"name": "Evaluate Transaction - GEO ANOMALY (Fraud)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idempotencyKey\": \"idem-fraud-001\",\n  \"amount\": 95000.00,\n  \"currency\": \"INR\",\n  \"cardNumber\": \"4111111111112222\",\n  \"merchantId\": \"FLIPKART001\",\n  \"merchantName\": \"Flipkart\",\n  \"customerId\": \"CUST700007\",\n  \"ipAddress\": \"198.51.100.45\",\n  \"geoLocation\": \"Lagos, Nigeria\",\n  \"deviceId\": \"DEV-UNKNOWN-999\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fraud/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fraud",
+						"evaluate"
+					]
+				}
+			}
+		},
+		{
+			"name": "Evaluate Transaction - FREQUENT (Suspicious)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idempotencyKey\": \"idem-frequent-001\",\n  \"amount\": 500.00,\n  \"currency\": \"INR\",\n  \"cardNumber\": \"4111111111111111\",\n  \"merchantId\": \"PAYTM001\",\n  \"merchantName\": \"Paytm\",\n  \"customerId\": \"CUST100001\",\n  \"ipAddress\": \"103.21.58.90\",\n  \"geoLocation\": \"Mumbai, India\",\n  \"deviceId\": \"DEV-ANDROID-001\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fraud/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fraud",
+						"evaluate"
+					]
+				}
+			}
+		},
+		{
+			"name": "Get Transaction by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fraud/transactions/TXN-001-UUID",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fraud",
+						"transactions",
+						"TXN-001-UUID"
+					]
+				}
+			}
+		}
+	]
+}
