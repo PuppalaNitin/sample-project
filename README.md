@@ -1,2 +1,4 @@
 # sample-project
-adding sample project of spring boot
+
+adding sample project of spring boot for given example
+
